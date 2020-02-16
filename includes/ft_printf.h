@@ -6,7 +6,7 @@
 /*   By: soyster <soyster@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 01:18:14 by soyster           #+#    #+#             */
-/*   Updated: 2020/02/14 20:52:56 by soyster          ###   ########.fr       */
+/*   Updated: 2020/02/16 20:57:09 by soyster          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,11 @@ typedef struct	s_flar
 	int			length; //длина 1 - h, 2 - hh, 3 - l, 4 - ll, 5 - L
 	char		specifier; //спецификатор
 	long double	f; // храниться флот
+	int			*fractional; //дробная часть флота
+	int			index; //индекс для дробной части флота
 }				t_flag;
 
-typedef union			u_double
+typedef union			u_double //убрать
 {
    long double			ld;
    struct
@@ -51,13 +53,13 @@ typedef union			u_double
    }					s_parts;
 }						t_double;
 
-typedef struct			s_mant_list 
+typedef struct			s_mant_list //убрать
 {
 	unsigned long		base_list;
 	struct s_mant_list	*next;
 }						t_mant_list;
 
-
+int		ft_rounding(t_flag *all_mod);
 void	ft_spec_f(va_list all_arg, t_flag *all_mod);
 int		ft_spec_x(t_flag *all_mod, char *pointer);
 int		ft_spec_p(t_flag *all_mod, char *pointer);
