@@ -6,7 +6,7 @@
 /*   By: soyster <soyster@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 01:18:14 by soyster           #+#    #+#             */
-/*   Updated: 2020/02/03 23:29:49 by soyster          ###   ########.fr       */
+/*   Updated: 2020/02/25 12:37:01 by mleticia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,22 @@ int ft_spec_s(va_list all_arg, t_flag *all_mod)
 	}
 	len = ft_strlen(str);
 
-	if (all_mod->precision == 0 && !all_mod->width) // ?!?!
+	if (all_mod->prc == 0 && !all_mod->width) // ?!?!
 		return (0);				 //?!?!			
-	if (all_mod->precision == 0 && all_mod->width)
+	if (all_mod->prc == 0 && all_mod->width)
 	{
-		ft_simple_width(all_mod->width, all_mod->result);
+		ft_simple_width(all_mod->width, all_mod->res);
 		return (0);
 	}
-	if (all_mod->precision > 0 && all_mod->precision < len)
-		len_prec = all_mod->precision;
+	if (all_mod->prc > 0 && all_mod->prc < len)
+		len_prec = all_mod->prc;
 	else
 		len_prec = len;
-	if (all_mod->flag_min == '-')
+	if (all_mod->f_min == '-')
 		ft_putstr_len(str, len_prec);
 	ft_width(all_mod, len_prec);
-	if (all_mod->flag_min != '-')
+	if (all_mod->f_min != '-')
 		ft_putstr_len(str, len_prec);
-	all_mod->result = all_mod->result + len; // результат сделать
+	all_mod->res = all_mod->res + len; // результат сделать
 	return (0);
 }
